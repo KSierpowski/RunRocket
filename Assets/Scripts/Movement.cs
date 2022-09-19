@@ -6,8 +6,11 @@ public class Movement : MonoBehaviour
 {
     [SerializeField] float mainThrust = 500f;
     [SerializeField] float rotationThrust = 100f;
-    
-    
+    [SerializeField] ParticleSystem mainEngine;
+    [SerializeField] ParticleSystem leftEngine;
+    [SerializeField] ParticleSystem rightEngine;
+
+
     Rigidbody rb;
 
     void Start()
@@ -28,31 +31,70 @@ public class Movement : MonoBehaviour
         {
             StartThrust();
         }
+        else
+        {
+            StopThrust();
+        }
 
     }
     private void ProcessRotation()
     {
         if (Input.GetKey(KeyCode.D))
         {
-            RotationThrust(rotationThrust);
+            RotateRight();
         }
-        if (Input.GetKey(KeyCode.A))
+           
+        else if (Input.GetKey(KeyCode.A))
         {
-            RotationThrust(-rotationThrust);
+            RotateLeft();
         }
+        else
+        {
+            StopRotate();
+        }
+            
     }
+
+    private void RotateLeft()
+    {
+            RotationThrust(-rotationThrust);
+            if (!leftEngine.isPlaying)
+            {
+                leftEngine.Play();
+            }
+    }
+
+    private void RotateRight()
+    {
+            RotationThrust(rotationThrust);
+            if (!rightEngine.isPlaying)
+            {
+                rightEngine.Play();
+            }
+    }
+
     private void StartThrust()
     {
        rb.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
+        if (!mainEngine.isPlaying)
+        {
+            mainEngine.Play();
+        }
     }
     private void StopThrust()
     {
-
+        mainEngine.Stop();
     }
     private void RotationThrust(float rotation)
     {
+        rb.freezeRotation = true;
         transform.Rotate(Vector3.forward * rotation * Time.deltaTime);
+        rb.freezeRotation = false;
     }
-
+    private void StopRotate()
+    {
+        rightEngine.Stop();
+        leftEngine.Stop();
+    }
 
 }
