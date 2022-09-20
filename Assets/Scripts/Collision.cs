@@ -15,7 +15,9 @@ public class Collision : MonoBehaviour
     public ParticleSystem successParticles;
 
     AudioSource audioSource;
- 
+
+    bool isTransparently = false;
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -23,6 +25,8 @@ public class Collision : MonoBehaviour
 
     void OnCollisionEnter(UnityEngine.Collision collision)
     {
+        if (isTransparently) return;
+
         switch (collision.gameObject.tag)
         {
             case "Respawn":
@@ -42,6 +46,7 @@ public class Collision : MonoBehaviour
 
     void CrashSequences()
     {
+        isTransparently = true;
         audioSource.Stop();
         audioSource.PlayOneShot(explosion);
         explosionParticles.Play();
@@ -51,6 +56,7 @@ public class Collision : MonoBehaviour
 
     void NextLevelSequences()
     {
+        isTransparently = true;
         audioSource.Stop();
         audioSource.PlayOneShot(success);
         successParticles.Play();
