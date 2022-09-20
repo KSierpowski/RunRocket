@@ -10,12 +10,14 @@ public class Movement : MonoBehaviour
     [SerializeField] ParticleSystem leftEngine;
     [SerializeField] ParticleSystem rightEngine;
 
-
+    AudioSource audioSource;
+    [SerializeField] AudioClip engineSound;
     Rigidbody rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = rb.GetComponent<AudioSource>();
     }
 
     void Update()
@@ -80,9 +82,15 @@ public class Movement : MonoBehaviour
         {
             mainEngine.Play();
         }
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(engineSound);
+        }
+       ;
     }
     private void StopThrust()
     {
+        audioSource.Stop();
         mainEngine.Stop();
     }
     private void RotationThrust(float rotation)
