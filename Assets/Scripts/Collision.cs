@@ -34,28 +34,28 @@ public class Collision : MonoBehaviour
                 break;
 
             case "Finish":
-                NextLevelSequences();
+                StartCoroutine(NextLevelSequences());
                 break;
 
             default:
                 {
-                    CrashSequences();
+                    StartCoroutine(CrashSequences());
                     break ;
                 }
         }
     }
-
-    void CrashSequences()
+    private IEnumerator CrashSequences()
     {
         isTransparently = true;
         audioSource.Stop();
         audioSource.PlayOneShot(explosion);
         explosionParticles.Play();
         GetComponent<Movement>().enabled = false;
+        yield return new WaitForSeconds(loadDelay);
         GetComponent<EndGameHandler>().CrashHandler();
     }
 
-    void NextLevelSequences()
+    private IEnumerator NextLevelSequences()
     {
         isTransparently = true;
         finishLevel = true;
@@ -63,6 +63,7 @@ public class Collision : MonoBehaviour
         audioSource.PlayOneShot(success);
         successParticles.Play();
         GetComponent<Movement>().enabled = false;
+        yield return new WaitForSeconds(loadDelay);
         GetComponent<EndGameHandler>().CrashHandler();
     }
 
