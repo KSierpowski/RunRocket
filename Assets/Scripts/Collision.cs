@@ -17,6 +17,7 @@ public class Collision : MonoBehaviour
     AudioSource audioSource;
 
     bool isTransparently = false;
+    public bool finishLevel = false;
 
     void Start()
     {
@@ -51,36 +52,19 @@ public class Collision : MonoBehaviour
         audioSource.PlayOneShot(explosion);
         explosionParticles.Play();
         GetComponent<Movement>().enabled = false;
-        Invoke("ReloadLevel", loadDelay);
+        GetComponent<EndGameHandler>().CrashHandler();
     }
 
     void NextLevelSequences()
     {
         isTransparently = true;
+        finishLevel = true;
         audioSource.Stop();
         audioSource.PlayOneShot(success);
         successParticles.Play();
         GetComponent<Movement>().enabled = false;
-        Invoke("LoadNextLevel", loadDelay);
+        GetComponent<EndGameHandler>().CrashHandler();
     }
 
-    void ReloadLevel()
-    {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex);
-    }
 
-    void LoadNextLevel()
-    {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        int nextSceneIndex = currentSceneIndex + 1;
-
-        if (nextSceneIndex == SceneManager.sceneCountInBuildSettings)
-        {
-            nextSceneIndex = 0;
-        }
-
-        SceneManager.LoadScene(nextSceneIndex);
-
-    }
 }
