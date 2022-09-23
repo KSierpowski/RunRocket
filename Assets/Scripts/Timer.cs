@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
+    public Text score;
     public Text timerText;
     private float startTime;
 
@@ -38,6 +39,7 @@ public class Timer : MonoBehaviour
     {
         timer = Time.time - startTime;
         timerText.text = TimeToString(timer);
+        score.text = TimeToString(timer);
     }
 
     float StopTimer()

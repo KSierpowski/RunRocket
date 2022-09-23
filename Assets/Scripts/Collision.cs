@@ -64,6 +64,8 @@ public class Collision : MonoBehaviour
         successParticles.Play();
         GetComponent<Movement>().enabled = false;
         yield return new WaitForSeconds(loadDelay);
+        GetComponent<EndGameHandler>().Score();
+        yield return new WaitForSeconds(loadDelay);
         GetComponent<EndGameHandler>().SuccessHandler();
     }
 
