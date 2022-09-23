@@ -65,7 +65,6 @@ public class Collision : MonoBehaviour
         GetComponent<Movement>().enabled = false;
         yield return new WaitForSeconds(loadDelay);
         GetComponent<EndGameHandler>().Score();
-        yield return new WaitForSeconds(loadDelay);
         GetComponent<EndGameHandler>().SuccessHandler();
     }
 

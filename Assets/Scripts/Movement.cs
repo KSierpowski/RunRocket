@@ -9,22 +9,23 @@ public class Movement : MonoBehaviour
     [SerializeField] ParticleSystem mainEngine;
     [SerializeField] ParticleSystem leftEngine;
     [SerializeField] ParticleSystem rightEngine;
+    [SerializeField] AudioClip engineSound;
 
     AudioSource audioSource;
-    [SerializeField] AudioClip engineSound;
     Rigidbody rb;
+
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         audioSource = rb.GetComponent<AudioSource>();
+
     }
 
     void Update()
     {
         ProcessThrust();
-        ProcessRotation();
-        
+        ProcessRotation();  
     }
 
     private void ProcessThrust()
