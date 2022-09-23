@@ -12,7 +12,7 @@ public class Menu : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.Space))
         {
             menu.SetActive(false);
         }
