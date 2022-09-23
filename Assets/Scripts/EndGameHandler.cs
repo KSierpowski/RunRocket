@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class EndGameHandler : MonoBehaviour
 {
-    [SerializeField] Canvas gameOverCanvas;
+    [SerializeField] Canvas successCanvas;
+    [SerializeField] Canvas crashCanvas;
 
     void Start()
     {
-        gameOverCanvas.enabled = false;
+        successCanvas.enabled = false;
+        crashCanvas.enabled = false;
     }
-public void CrashHandler()
+public void SuccessHandler()
     {
-        gameOverCanvas.enabled = true;
+        successCanvas.enabled = true;
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    public void CrashHandler()
+    {
+        crashCanvas.enabled = true;
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
