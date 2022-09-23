@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour
     AudioSource audioSource;
     Rigidbody rb;
 
+    public bool mute = false;
 
     void Start()
     {
@@ -25,7 +26,9 @@ public class Movement : MonoBehaviour
     void Update()
     {
         ProcessThrust();
-        ProcessRotation();  
+        ProcessRotation();
+        MuteSounds();
+     
     }
 
     private void ProcessThrust()
@@ -106,4 +109,15 @@ public class Movement : MonoBehaviour
         leftEngine.Stop();
     }
 
+    private void MuteSounds()
+    {
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            mute = !mute;
+            if (mute == false) { audioSource.volume = 1f; }
+            else { audioSource.volume = 0f; }
+        }
+            
+    }
 }
