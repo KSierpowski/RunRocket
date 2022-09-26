@@ -18,11 +18,14 @@ public class Timer : MonoBehaviour
     void Start()
     {   
         collision = GetComponent<Collision>();
-        StartTimer();
     }
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            StartTimer();
+        }
         if (collision.finishLevel == true)
         {
             Debug.Log("Timer stopped at " + TimeToString(StopTimer()));
@@ -47,7 +50,7 @@ public class Timer : MonoBehaviour
         return timer;
     }
 
-    void StartTimer()
+    public void StartTimer()
     {
         keepTiming = true;
         startTime = Time.time;
