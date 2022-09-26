@@ -18,15 +18,21 @@ public class Collision : MonoBehaviour
 
     bool isTransparently = false;
     public bool finishLevel = false;
+    bool collisionDisabled = false;
+
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
     }
+    private void Update()
+    {
+        DebugKeys();
+    }
 
     void OnCollisionEnter(UnityEngine.Collision collision)
     {
-        if (isTransparently) return;
+        if (isTransparently || collisionDisabled) return;
 
         switch (collision.gameObject.tag)
         {
@@ -44,6 +50,14 @@ public class Collision : MonoBehaviour
                 }
         }
     }
+    void DebugKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            collisionDisabled = !collisionDisabled;
+        }
+    }
+
     private IEnumerator CrashSequences()
     {
         isTransparently = true;
