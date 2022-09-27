@@ -10,7 +10,7 @@ public class Timer : MonoBehaviour
     public Text timerText;
     private float startTime;
 
-    bool keepTiming;
+    bool keepTiming = false;
     float timer;
 
     Collision collision;
@@ -22,10 +22,15 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S))
+        if (keepTiming == false)
         {
-            StartTimer();
+            if (Input.GetKey(KeyCode.Space))
+            {
+                StartTimer();
+                keepTiming = true;
+            }
         }
+
         if (collision.finishLevel == true)
         {
             Debug.Log("Timer stopped at " + TimeToString(StopTimer()));
