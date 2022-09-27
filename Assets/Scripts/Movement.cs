@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour
     [SerializeField] ParticleSystem leftEngine;
     [SerializeField] ParticleSystem rightEngine;
     [SerializeField] AudioClip engineSound;
+    [SerializeField] Canvas muteImage;
 
     AudioSource audioSource;
     Rigidbody rb;
@@ -20,6 +21,7 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         audioSource = rb.GetComponent<AudioSource>();
+        muteImage.enabled = false;
 
     }
 
@@ -114,9 +116,18 @@ public class Movement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.M))
         {
+            
             mute = !mute;
-            if (mute == false) { audioSource.volume = 1f; }
-            else { audioSource.volume = 0f; }
+            if (mute == false) 
+            { 
+                audioSource.volume = 1f; 
+                muteImage.enabled = false;
+            }
+            else 
+            { 
+                audioSource.volume = 0f;
+                muteImage.enabled = true;
+            }
         }
             
     }
