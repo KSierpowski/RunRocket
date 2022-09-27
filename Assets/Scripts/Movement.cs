@@ -22,6 +22,7 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         audioSource = rb.GetComponent<AudioSource>();
         muteImage.enabled = false;
+        Time.timeScale = 1;
 
     }
 
