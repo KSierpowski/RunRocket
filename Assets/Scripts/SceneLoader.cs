@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    public int nextSceneLoad;
+
+    private void Start()
+    {
+        nextSceneLoad = SceneManager.GetActiveScene().buildIndex + 1;
+    }
     public void ReloadLevel()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -15,15 +21,14 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        int nextSceneIndex = currentSceneIndex + 1;
+        //int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
-        if (nextSceneIndex == SceneManager.sceneCountInBuildSettings)
+        SceneManager.LoadScene(nextSceneLoad);
+        if (nextSceneLoad > PlayerPrefs.GetInt("levelReached"))
         {
-            nextSceneIndex = 0;
+            PlayerPrefs.SetInt("levelReached", nextSceneLoad);
         }
 
-        SceneManager.LoadScene(nextSceneIndex);
 
     }
 
