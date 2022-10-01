@@ -27,7 +27,7 @@ public class Lights : MonoBehaviour
     }
     public void RestoreLightIntensity(float intensityAmount)
     {
-        rocketLight.intensity += intensityAmount;
+        rocketLight.intensity = intensityAmount;
     }
 
 
