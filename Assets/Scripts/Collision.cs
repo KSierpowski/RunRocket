@@ -16,7 +16,6 @@ public class Collision : MonoBehaviour
     public ParticleSystem successParticles;
 
     AudioSource audioSource;
-    EndGameHandler endGameHandler;
 
     bool isTransparently = false;
     public bool finishLevel = false;

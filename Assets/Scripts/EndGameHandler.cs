@@ -7,8 +7,6 @@ public class EndGameHandler : MonoBehaviour
     [SerializeField] Canvas successCanvas;
     [SerializeField] Canvas crashCanvas;
 
-    TimeCountdown timeCountdown;
-
     void Start()
     {
         successCanvas.enabled = false;

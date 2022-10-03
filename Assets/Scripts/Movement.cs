@@ -30,7 +30,6 @@ public class Movement : MonoBehaviour
     {
         ProcessThrust();
         ProcessRotation();
-        MuteSounds();
      
     }
 
@@ -112,24 +111,5 @@ public class Movement : MonoBehaviour
         leftEngine.Stop();
     }
 
-    private void MuteSounds()
-    {
 
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            
-            mute = !mute;
-            if (mute == false) 
-            { 
-                audioSource.volume = 1f; 
-                muteImage.enabled = false;
-            }
-            else 
-            { 
-                audioSource.volume = 0f;
-                muteImage.enabled = true;
-            }
-        }
-            
-    }
 }
