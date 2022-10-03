@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
+using TMPro;
 
 public class TimeCountdown : MonoBehaviour
 {
     [SerializeField] public float startTime = 45f;
     [SerializeField] Canvas gameOverCanvas;
 
-    public Text timerText;
+    public TextMeshProUGUI timerText;
     AudioSource audioSource;
 
     private bool isTiming = false;
