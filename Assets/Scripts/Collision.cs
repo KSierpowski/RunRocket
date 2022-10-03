@@ -10,11 +10,13 @@ public class Collision : MonoBehaviour
 
     public AudioClip explosion;
     public AudioClip success;
+    public AudioClip finalAudio;
 
     public ParticleSystem explosionParticles;
     public ParticleSystem successParticles;
 
     AudioSource audioSource;
+    EndGameHandler endGameHandler;
 
     bool isTransparently = false;
     public bool finishLevel = false;
@@ -42,6 +44,10 @@ public class Collision : MonoBehaviour
             case "Finish":
                 StartCoroutine(NextLevelSequences());
                 break;
+            case "LastFinish":
+                StartCoroutine(LastLevelSequences());
+                break;
+
 
             default:
                 {
@@ -80,6 +86,18 @@ public class Collision : MonoBehaviour
         yield return new WaitForSeconds(loadDelay);
         GetComponent<EndGameHandler>().SuccessHandler();
     }
+    private IEnumerator LastLevelSequences()
+    {
+        isTransparently = true;
+        finishLevel = true;
+        audioSource.Stop();
+        audioSource.PlayOneShot(finalAudio);
+        successParticles.Play();
+        GetComponent<Movement>().enabled = false;
+        yield return new WaitForSeconds(loadDelay);
+        GetComponent<EndGameHandler>().SuccessHandler();
+    }
+
 
 
 }
