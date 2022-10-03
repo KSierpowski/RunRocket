@@ -22,10 +22,10 @@ Level selector - after completing a level, you can return to it, but you can't g
 https://play.unity.com/mg/other/runrocket
 
 Controls: AD - for changing rocket rotation
-Space - Acceleration
-M - Mute music 
-R - Reset levels
-Esc - Quit 
+Space - Acceleration  
+M - Mute music  
+R - Reset levels  
+Esc - Quit   
 
 ## Screenshots
 
