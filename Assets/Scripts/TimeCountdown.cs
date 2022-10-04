@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class TimeCountdown : MonoBehaviour
 {
@@ -54,7 +55,7 @@ public class TimeCountdown : MonoBehaviour
         if(startTime > 0)
         {
             startTime -= Time.deltaTime;
-            timerText.text = TimeToString(startTime);
+            timerText.text = FormatTime(startTime);
         }
         else
         {
@@ -62,10 +63,15 @@ public class TimeCountdown : MonoBehaviour
         }
 
     }
-    string TimeToString(float t)
+    string FormatTime(float time)
     {
-        string seconds = (t % 60).ToString("f2");
-        return seconds;
+        int intTime = (int)time;
+        int minutes = intTime / 60;
+        int seconds = intTime % 60;
+        float fraction = time * 1000;
+        fraction = (fraction % 100);
+        string timeText = String.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, fraction);
+        return timeText;
     }
 }
 
