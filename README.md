@@ -29,8 +29,8 @@ Esc - Quit
 
 ## Screenshots
 
-![gi2](https://user-images.githubusercontent.com/106316118/193577553-1b33be3d-3f10-4fc7-bcf8-08f3914ec1eb.png)
+![gi1](https://user-images.githubusercontent.com/106316118/193785530-2c59f77b-d1cb-4164-9bc8-36b56dc065f4.png)
 
 
-![gi1](https://user-images.githubusercontent.com/106316118/193577868-efeb07c5-3fb6-4bd5-be9e-02ff30ceaf34.png)
+![gi2](https://user-images.githubusercontent.com/106316118/193785587-0eba6411-669f-4008-b030-0c17b1d987b3.png)
 
