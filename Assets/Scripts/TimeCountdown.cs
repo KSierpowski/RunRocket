@@ -14,6 +14,7 @@ public class TimeCountdown : MonoBehaviour
 
     public TextMeshProUGUI timerText;
     AudioSource audioSource;
+    Collision collision;
 
     private bool isTiming = false;
     public bool gameOver = false;
@@ -22,9 +23,11 @@ public class TimeCountdown : MonoBehaviour
     {
         gameOverCanvas.enabled = false;
         audioSource = GetComponent<AudioSource>();
+        collision = GetComponent<Collision>();
     }
     void Update()
     {
+        StopTimer();
         TimeOver();
         if (isTiming == false)
         {
@@ -46,8 +49,17 @@ public class TimeCountdown : MonoBehaviour
             audioSource.Stop();
             gameOverCanvas.enabled = true;
             GetComponent<Movement>().enabled = false;
+            collision.StopAllCoroutines();
         }
 
+    }
+
+    private void StopTimer()
+    {
+        if (collision.finishLevel == true)
+        {
+            isTiming = false;
+        }
     }
 
     private void UpdateTime()
