@@ -5,8 +5,10 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] float mainThrust = 500f;
+    [SerializeField] float backThrust = 200f;
     [SerializeField] float rotationThrust = 100f;
     [SerializeField] ParticleSystem mainEngine;
+    [SerializeField] ParticleSystem backEngine;
     [SerializeField] ParticleSystem leftEngine;
     [SerializeField] ParticleSystem rightEngine;
     [SerializeField] AudioClip engineSound;
@@ -29,6 +31,7 @@ public class Movement : MonoBehaviour
     void Update()
     {
         ProcessThrust();
+        ProcessBackThrust();
         ProcessRotation();
      
     }
@@ -43,6 +46,16 @@ public class Movement : MonoBehaviour
         {
             StopThrust();
         }
+    }
+    private void ProcessBackThrust()
+    {
+        if (Input.GetKey(KeyCode.S))
+        {
+            BackThrust();            
+        }
+        else { StopBackThrust(); }
+
+        
 
     }
     private void ProcessRotation()
@@ -80,7 +93,18 @@ public class Movement : MonoBehaviour
                 rightEngine.Play();
             }
     }
-
+    private void BackThrust()
+    {
+        rb.AddRelativeForce(Vector3.down * backThrust * Time.deltaTime);
+        if (!backEngine.isPlaying)
+        {
+            backEngine.Play();
+        }
+    }
+    private void StopBackThrust()
+    {
+        backEngine.Stop();
+    }
     private void StartThrust()
     {
        rb.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
@@ -92,7 +116,6 @@ public class Movement : MonoBehaviour
         {
             audioSource.PlayOneShot(engineSound);
         }
-       ;
     }
     private void StopThrust()
     {
