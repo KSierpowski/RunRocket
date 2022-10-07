@@ -11,7 +11,7 @@ I would like a player to be careful all the time about gravity other than Earth 
 
 Time lapse - Complete the level before time runs out.
 
-Battery - some levels are darker, try to grabbing battery for better vision
+Fuel - reverse engine is smaller, keep an eye on the fuel level
 
 Obstacles - don't touch the obstacles (some of them may move).
 
@@ -21,16 +21,18 @@ Level selector - after completing a level, you can return to it, but you can't g
 
 https://play.unity.com/mg/other/runrocket
 
-Controls: AD - for changing rocket rotation  
+Controls:  
+AD - for changing rocket rotation  
 Space - Acceleration  
+S - Reverse engine  
 M - Mute music  
 R - Reset levels  
 Esc - Quit   
 
 ## Screenshots
 
-![gi1](https://user-images.githubusercontent.com/106316118/193785530-2c59f77b-d1cb-4164-9bc8-36b56dc065f4.png)
+![gi1](https://user-images.githubusercontent.com/106316118/194510145-4c892c7b-874f-43c6-b098-c6d0162ec351.png)
 
 
-![gi2](https://user-images.githubusercontent.com/106316118/193785587-0eba6411-669f-4008-b030-0c17b1d987b3.png)
+![gi2](https://user-images.githubusercontent.com/106316118/194510218-7fbe09d8-c788-43e9-832f-26d5736913d3.png)
 
